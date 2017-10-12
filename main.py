@@ -93,11 +93,11 @@ def health():
 @app.route('/issues/<project>/<team>', methods=['POST'])
 def file_issue(project, team):
     """
-    This endpoint accepts a JSON encoded notification according to the version 3
+    This endpoint accepts a JSON encoded notification according to the version 4
     of the generic webhook of the Prometheus Alertmanager.
     """
     data = request.get_json()
-    if data['version'] != "3":
+    if data['version'] != "4":
         return "unknown message version %s" % data['version'], 400
 
     resolved = data['status'] == "resolved"
